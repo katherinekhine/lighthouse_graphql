@@ -1,0 +1,22 @@
+scalar DateTime
+
+type Employee {
+    id: ID!
+    name: String!
+    email: String!
+    phone: String!
+    position: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Query {
+    employees: [Employee!]
+        @paginate(
+            resolver: "App\\GraphQL\\Resolvers\\EmployeeResolver@resolveEmployees"
+        )
+    employee(id: ID! @eq): Employee
+        @field(
+            resolver: "App\\GraphQL\\Resolvers\\EmployeeResolver@resolveEmployee"
+        )
+}
