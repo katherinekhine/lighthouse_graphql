@@ -1,0 +1,23 @@
+query GetEmployees($page: Int!, $first: Int!) {
+  employees(page: $page, first: $first) {
+    data {
+      id
+      name
+      email
+      phone
+      position
+    }
+    paginatorInfo {
+      currentPage
+      lastPage
+      total
+    }
+  }
+}
+
+// In variable
+{
+  "page": 2,
+  "first": 10
+}
+
